@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="source/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="../src/style.css" />
+    <title>Document</title>
+    <!-- darkmode checker -->
+    <script>
+      if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="transition-colors duration-300 dark:bg-slate-800">
+    <!-- navbar -->
+    <div class="navbar border-b border-purple-900 transition-colors duration-300 dark:border-slate-900">
+      <div class="flex p-2">
+        <!-- pseudo container -->
+        <div class="hidden w-6/12 justify-end md:flex"></div>
+        <!-- nav logo -->
+        <div class="flex w-6/12 items-center md:justify-center">
+          <img class="h-[3rem] w-[3rem] ease-in-out hover:animate-pulse md:h-[5rem] md:w-[5rem]" src="images/alpha.png" alt="" />
+        </div>
+        <!-- nav menu -->
+        <div class="flex w-6/12 justify-end">
+          <div class="inline-flex items-center space-x-5 py-5">
+            <!-- darkmode toggle -->
+            <div class="inline-flex items-center">
+              <span><i class="fas fa-sun text-md transition-colors duration-300 dark:text-white md:text-xl"></i></span>
+              <input type="checkbox" class="hidden" id="toggle" />
+              <label for="toggle" class="p-1">
+                <div class="flex h-3 w-7 cursor-pointer items-center rounded-full bg-slate-300">
+                  <div class="toggle-circle h-4 w-4 rounded-full bg-purple-400 transition duration-300"></div>
+                </div>
+              </label>
+              <span><i class="fas fa-moon text-md transition-colors duration-300 dark:text-white md:text-xl"></i></span>
+            </div>
+            <!-- navbar desktop -->
+            <div class="hidden items-center space-x-5 lg:inline-flex">
+              <li class="list-none">
+                <a href="#" class="block rounded-md border-2 border-black py-2 px-4 hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-slate-900"><i class="fas fa-download"></i> Download</a>
+              </li>
+              <li class="list-none">
+                <a href="#" class="block rounded-md border-2 border-black py-2 px-4 hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-slate-900"><i class="fas fa-expand"></i> Fullscreen</a>
+              </li>
+            </div>
+            <!-- navbar dropdown for android -->
+            <div class="relative inline-flex items-center lg:hidden">
+              <button id="menu-toggle" class="rounded-lgtext-center inline-flex items-center text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-slate-400">
+                <i id="menu-toggle-icon" class="fa fa-bars text-xl" aria-hidden="true"></i>
+              </button>
+              <div id="menu-drop" class="absolute -left-24 top-10 divide-y divide-gray-100 rounded bg-white opacity-0 shadow transition-all duration-200 ease-in-out dark:bg-gray-700">
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                  <li>
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fas fa-download"></i> Download</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fas fa-expand"></i> Fullscreen</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- endnavbar -->
+
+    <!-- sidebar -->
+    <div id="sidemenu" class="sidebar transform transition duration-300 -left-[2.6rem] shadow-lg">
+      <div class="relative flex flex-col bg-purple-800">
+        <button class="p-3 transition-all duration-200 hover:bg-purple-900">
+          <span>
+            <i class="fas fa-home text-white"></i>
+          </span>
+        </button>
+        <button class="p-3 transition-all duration-200 hover:bg-purple-900">
+          <span>
+            <i class="fas fa-music text-white"></i>
+          </span>
+        </button>
+        <button class="p-3 transition-all duration-200 hover:bg-purple-900">
+          <span>
+            <i class="fas fa-list text-white"></i>
+          </span>
+        </button>
+      </div>
+      <div id="sidebar-toggle" class="absolute top-[3.7rem] -right-7 w-7 cursor-pointer bg-purple-900 text-center">
+        <i id="sidebar-toggle-icon" class="fa fa-arrow-right text-md text-white" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- endsidebar -->
+
+    <!-- content android -->
+    <div class="android-content px-6 py-28 md:hidden">
+      <div id="page_1" class="bg-red-200">
+        <img src="images/1.jpg" class="object-fit w-full" alt="">
+      </div>
+      <div id="page_1" class="bg-red-200">
+        <img src="images/1.jpg" class="object-fit w-full" alt="">
+      </div>
+      <div id="page_1" class="bg-red-200">
+        <img src="images/1.jpg" class="object-fit w-full" alt="">
+      </div>
+    </div>
+    <!-- endcontent android -->
+    <!-- content desktop -->
+    <div class="desktop-content hidden w-11/12 pt-32 md:mx-auto md:block">
+      <div id="page_1" class="bg-red-200">
+        <img src="images/1.jpg" class="object-fit h-[500px] w-full" alt="">
+      </div>
+    </div>
+    <!-- endcontent desktop -->
+
+    <!-- script section -->
+    <script src="source/fontawesome/js/all.min.js"></script>
+    <script src="../node_modules/flowbite/dist/flowbite.js"></script>
+    <script src="source/js/script.js"></script>
+  </body>
+</html>

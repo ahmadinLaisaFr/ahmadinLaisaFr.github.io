@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    #toggle:checked ~ label div.toggle-circle {
+    /* transform: translateX(0.75rem); */
+    @apply translate-x-[0.80rem];
+    }
+
+    .navbar {
+        @apply fixed top-0 left-0 right-0 z-[999] backdrop-blur-sm;
+    }
+
+    .sidebar{
+        @apply w-fit fixed top-[50%] z-[9999];
+    }
+}

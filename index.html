@@ -18,27 +18,27 @@
   </head>
   <body class="transition-colors duration-300 dark:bg-slate-800">
     <!-- navbar -->
-    <div class="navbar border-b border-purple-900 transition-colors duration-300 dark:border-slate-900">
-      <div class="flex p-2">
+    <div id="navbar" class="blur-section navbar border-b border-purple-900 transition-colors duration-300 dark:border-slate-900">
+      <div class="flex p-2 md:py-0 md:px-2">
         <!-- pseudo container -->
         <div class="hidden w-6/12 justify-end md:flex"></div>
         <!-- nav logo -->
         <div class="flex w-6/12 items-center md:justify-center">
-          <img class="h-[3rem] w-[3rem] ease-in-out hover:animate-pulse md:h-[5rem] md:w-[5rem]" src="public/images/alpha.png" alt="" />
+          <img class="h-[4rem] w-[4rem] ease-in-out hover:animate-pulse md:h-[4rem] md:w-[4rem]" src="public/images/alpha.png" alt="" />
         </div>
         <!-- nav menu -->
         <div class="flex w-6/12 justify-end">
           <div class="inline-flex items-center space-x-5 py-5">
             <!-- darkmode toggle -->
             <div class="inline-flex items-center">
-              <span><i class="fas fa-sun text-md transition-colors duration-300 dark:text-white md:text-xl"></i></span>
+              <span><i class="fas fa-sun text-lg transition-colors duration-300 dark:text-white md:text-xl"></i></span>
               <input type="checkbox" class="hidden" id="toggle" />
-              <label for="toggle" class="p-1">
-                <div class="flex h-3 w-7 cursor-pointer items-center rounded-full bg-slate-300">
-                  <div class="toggle-circle h-4 w-4 rounded-full bg-purple-400 transition duration-300"></div>
+              <label for="toggle" class="p-2">
+                <div class="flex h-4 w-7 cursor-pointer items-center rounded-full bg-slate-300">
+                  <div class="toggle-circle h-5 w-5 rounded-full bg-purple-400 transition duration-300"></div>
                 </div>
               </label>
-              <span><i class="fas fa-moon text-md transition-colors duration-300 dark:text-white md:text-xl"></i></span>
+              <span><i class="fas fa-moon text-lg transition-colors duration-300 dark:text-white md:text-xl"></i></span>
             </div>
             <!-- navbar desktop -->
             <div class="hidden items-center space-x-5 lg:inline-flex">
@@ -51,11 +51,11 @@
             </div>
             <!-- navbar dropdown for android -->
             <div class="relative inline-flex items-center lg:hidden">
-              <button id="menu-toggle" class="rounded-lgtext-center inline-flex items-center text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-slate-400">
-                <i id="menu-toggle-icon" class="fa fa-bars text-xl" aria-hidden="true"></i>
+              <button id="menu-toggle" class="rounded-lgtext-center inline-flex items-center text-sm transition-colors duration-300 dark:text-slate-400">
+                <i id="menu-toggle-icon" class="fa fa-bars text-2xl" aria-hidden="true"></i>
               </button>
-              <div id="menu-drop" class="absolute -left-24 top-10 divide-y divide-gray-100 rounded bg-white opacity-0 shadow transition-all duration-200 ease-in-out dark:bg-gray-700">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+              <div id="menu-drop" class="absolute -left-32 top-10 w-36 divide-y divide-gray-100 rounded bg-white opacity-0 shadow transition-all duration-200 ease-in-out dark:bg-gray-700">
+                <ul class="py-1 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                   <li>
                     <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fas fa-download"></i> Download</a>
                   </li>
@@ -72,8 +72,8 @@
     <!-- endnavbar -->
 
     <!-- sidebar -->
-    <div id="sidemenu" class="sidebar transform transition duration-300 -left-[2.6rem] shadow-lg">
-      <div class="relative flex flex-col bg-purple-800">
+    <div id="sidemenu" class="sidebar -left-[2.6rem] transform transition duration-300">
+      <div class="relative flex flex-col bg-purple-800 rounded-r-md shadow-lg">
         <button class="p-3 transition-all duration-200 hover:bg-purple-900">
           <span>
             <i class="fas fa-home text-white"></i>
@@ -84,35 +84,45 @@
             <i class="fas fa-music text-white"></i>
           </span>
         </button>
-        <button class="p-3 transition-all duration-200 hover:bg-purple-900">
+        <button id="goto-page-toggle" class="p-3 transition-all duration-200 hover:bg-purple-900">
           <span>
-            <i class="fas fa-list text-white"></i>
+            <a><i class="fas fa-list text-white"></i></a>
           </span>
         </button>
+        <div id="goto-page-drop" class="absolute -right-32 top-32 w-36 divide-y divide-gray-100 rounded bg-white opacity-0 shadow transition-all duration-200 ease-in-out dark:bg-gray-700">
+          <ul class="py-1 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+            <span class="p-4 text-lg">Go to Page</span>
+            <li>
+              <a href="#page_1" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1</a>
+            </li>
+            <li>
+              <a href="#page_2" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div id="sidebar-toggle" class="absolute top-[3.7rem] -right-7 w-7 cursor-pointer bg-purple-900 text-center">
-        <i id="sidebar-toggle-icon" class="fa fa-arrow-right text-md text-white" aria-hidden="true"></i>
+      <div id="sidebar-toggle" class="absolute top-[3.2rem] -right-7 w-7 h-10 cursor-pointer bg-purple-900 text-center flex items-center justify-center rounded-r-md">
+        <i id="sidebar-toggle-icon" class="fa fa-arrow-right text-2xl text-white" aria-hidden="true"></i>
       </div>
     </div>
     <!-- endsidebar -->
 
     <!-- content android -->
-    <div class="android-content px-6 py-28 md:hidden">
-      <div id="page_1" class="bg-red-200">
-        <img src="public/images/1.jpg" class="object-fit w-full" alt="">
+    <div id="content-android" class="blur-section android-content px-6 py-28 md:hidden space-y-10">
+      <div id="page_1" class="">
+        <img src="public/images/materi/tespart1.jpg" class="object-fit w-full" alt="" />
+        <img src="public/images/materi/tespart2.jpg" class="object-fit w-full" alt="" />
       </div>
-      <div id="page_1" class="bg-red-200">
-        <img src="public/images/1.jpg" class="object-fit w-full" alt="">
-      </div>
-      <div id="page_1" class="bg-red-200">
-        <img src="public/images/1.jpg" class="object-fit w-full" alt="">
+      <div id="page_2" class="">
+        <img src="public/images/materi/tespart1.jpg" class="object-fit w-full" alt="" />
+        <img src="public/images/materi/tespart2.jpg" class="object-fit w-full" alt="" />
       </div>
     </div>
     <!-- endcontent android -->
     <!-- content desktop -->
-    <div class="desktop-content hidden w-11/12 pt-32 md:mx-auto md:block">
-      <div id="page_1" class="bg-red-200">
-        <img src="public/images/1.jpg" class="object-fit h-[500px] w-full" alt="">
+    <div id="content-desktop" class="blur-section desktop-content hidden w-11/12 pt-32 md:mx-auto md:block">
+      <div id="page_1" class="bg-slate-300 dark:bg-slate-900">
+        <img src="public/images/materi/tes adin-01.jpg" class="h-[500px] w-full object-contain" alt="" />
       </div>
     </div>
     <!-- endcontent desktop -->

@@ -32,19 +32,31 @@ menuToggle.addEventListener("click", () => {
     menuDrop.classList.toggle("opacity-0")
     // menuDrop.classList.remove('-right-36')
 })
+// menu dropdown gotopage
+let gotoPageToggle = document.querySelector("#goto-page-toggle");
+let gotoPageDrop = document.querySelector('#goto-page-drop')
+let blur = document.querySelectorAll('.blur-section')
+
+
+gotoPageToggle.addEventListener("click", () => {
+    // blur.classList.toggle("blur-[2px]");
+    gotoPageDrop.classList.toggle("opacity-0");
+  // menuDrop.classList.remove('-right-36')
+});
 
 // menu sidebar
-let sidebarMenu = document.querySelector('#sidemenu')
 let sidebarToggle = document.querySelector("#sidebar-toggle");
-let sidebarToggleIcon = document.querySelector("#sidebar-toggle-icon");
+let sidebarMenu = document.querySelector('#sidemenu')
 
 
 sidebarToggle.addEventListener("click", () => {
     sidebarMenu.classList.toggle("-left-[2.6rem]");
+    blur.forEach((e) => {
+        e.classList.toggle("blur-[1px]");
+    });
+    if (!gotoPageDrop.classList.contains("opacity-0")) {
+        gotoPageDrop.classList.toggle("opacity-0");
+    }
     // sidebarMenu.style.transform = "translateX(-2.7rem)"
     // menuDrop.classList.remove('-right-36')
 })
-
-// window.addEventListener("click", (e) => {
-//     alert(menuToggle + e.target)
-// })

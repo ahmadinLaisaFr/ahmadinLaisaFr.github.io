@@ -23,6 +23,8 @@ if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.match
 }
 
 // end darkmode toggle
+
+// fullscreen toggle
 let fullscreen = document.querySelector('#fullscreen-toggle')
 let fullscreenDesk = document.querySelector('#fullscreen-toggle-desk')
 
@@ -38,6 +40,16 @@ fullscreen.addEventListener('click', () => {
           /* IE11 */
           html.msRequestFullscreen()
         }
+    } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          /* IE11 */
+          document.msExitFullscreen();
+        }
     }
 })
 // desktop
@@ -52,10 +64,18 @@ fullscreenDesk.addEventListener('click', () => {
           /* IE11 */
           html.msRequestFullscreen()
         }
+    } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          /* IE11 */
+          document.msExitFullscreen();
+        }
     }
 })
-// fullscreen toggle
-
 // end fullscreen toggle
 
 // menu dropdown android
@@ -84,7 +104,7 @@ let sidebarMenu = document.querySelector('#sidemenu')
 
 sidebarToggle.addEventListener("click", () => {
     sidebarToggleIcon.classList.toggle("-rotate-180")
-    sidebarMenu.classList.toggle("translate-x-10")
+    sidebarMenu.classList.toggle("translate-x-[0.01rem]");
     blur.forEach((e) => {
         e.classList.toggle("blur-[2px]")
     })
@@ -92,3 +112,28 @@ sidebarToggle.addEventListener("click", () => {
         gotoPageDrop.classList.toggle("opacity-0")
     }
 })
+
+// end menu sidebar
+
+// start to top
+
+let toTop = document.getElementById("to-top")
+let navbar = document.getElementById("navbar")
+if (window.scrollY < 100) {
+    toTop.classList.add("opacity-0");
+    navbar.classList.remove("bg-opacity-40");
+    navbar.classList.remove("dark:bg-opacity-40");
+}
+
+window.onscroll = function() {
+    if (window.scrollY > 100) {
+        toTop.classList.remove("opacity-0");
+        navbar.classList.add("bg-opacity-40");
+        navbar.classList.add("dark:bg-opacity-40");
+    } else {
+        toTop.classList.add("opacity-0");
+        navbar.classList.remove("bg-opacity-40");
+        navbar.classList.remove("dark:bg-opacity-40");
+    }
+}
+// end to top

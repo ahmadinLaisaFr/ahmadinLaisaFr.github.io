@@ -1,7 +1,7 @@
 // darkmode toggle
 let toggle = document.querySelector('#toggle')
 let html = document.documentElement
-
+    
 const toggleDarkMode = () => {
     // ubah tema menjadi dark dan simpan data tema ke lokal storage
     if (toggle.checked) {
@@ -21,42 +21,74 @@ if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.match
 } else {
     toggle.checked = false
 }
+
 // end darkmode toggle
+let fullscreen = document.querySelector('#fullscreen-toggle')
+let fullscreenDesk = document.querySelector('#fullscreen-toggle-desk')
+
+// android
+fullscreen.addEventListener('click', () => {
+    if (fullscreen.checked) {
+        if (html.requestFullscreen) {
+          html.requestFullscreen()
+        } else if (html.webkitRequestFullscreen) {
+          /* Safari */
+          html.webkitRequestFullscreen()
+        } else if (html.msRequestFullscreen) {
+          /* IE11 */
+          html.msRequestFullscreen()
+        }
+    }
+})
+// desktop
+fullscreenDesk.addEventListener('click', () => {
+    if (fullscreenDesk.checked) {
+        if (html.requestFullscreen) {
+          html.requestFullscreen()
+        } else if (html.webkitRequestFullscreen) {
+          /* Safari */
+          html.webkitRequestFullscreen()
+        } else if (html.msRequestFullscreen) {
+          /* IE11 */
+          html.msRequestFullscreen()
+        }
+    }
+})
+// fullscreen toggle
+
+// end fullscreen toggle
 
 // menu dropdown android
-let menuToggle = document.querySelector("#menu-toggle");
+let menuToggle = document.querySelector("#menu-toggle")
 let menuDrop = document.querySelector('#menu-drop')
 
 
 menuToggle.addEventListener("click", () => {
     menuDrop.classList.toggle("opacity-0")
-    // menuDrop.classList.remove('-right-36')
 })
 // menu dropdown gotopage
-let gotoPageToggle = document.querySelector("#goto-page-toggle");
+let gotoPageToggle = document.querySelector("#goto-page-toggle")
 let gotoPageDrop = document.querySelector('#goto-page-drop')
 let blur = document.querySelectorAll('.blur-section')
 
 
 gotoPageToggle.addEventListener("click", () => {
-    // blur.classList.toggle("blur-[2px]");
-    gotoPageDrop.classList.toggle("opacity-0");
-  // menuDrop.classList.remove('-right-36')
-});
+    gotoPageDrop.classList.toggle("opacity-0")
+})
 
 // menu sidebar
-let sidebarToggle = document.querySelector("#sidebar-toggle");
+let sidebarToggleIcon = document.querySelector("#sidebar-toggle-icon");
+let sidebarToggle = document.querySelector("#sidebar-toggle")
 let sidebarMenu = document.querySelector('#sidemenu')
 
 
 sidebarToggle.addEventListener("click", () => {
-    sidebarMenu.classList.toggle("-left-[2.6rem]");
+    sidebarToggleIcon.classList.toggle("-rotate-180")
+    sidebarMenu.classList.toggle("translate-x-10")
     blur.forEach((e) => {
-        e.classList.toggle("blur-[1px]");
-    });
+        e.classList.toggle("blur-[2px]")
+    })
     if (!gotoPageDrop.classList.contains("opacity-0")) {
-        gotoPageDrop.classList.toggle("opacity-0");
+        gotoPageDrop.classList.toggle("opacity-0")
     }
-    // sidebarMenu.style.transform = "translateX(-2.7rem)"
-    // menuDrop.classList.remove('-right-36')
 })

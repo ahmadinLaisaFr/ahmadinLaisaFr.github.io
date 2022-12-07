@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="public/source/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="src/style.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="public/source/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="public/source/css/swiper.css" />
     <title>Document</title>
-    <!-- darkmode checker -->
+    <!-- feature checker -->
     <script>
+      // darkmode checker
       if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
       }
+
+      // fullscreen checker
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-slate-800">
@@ -43,10 +49,13 @@
             <!-- navbar desktop -->
             <div class="hidden items-center space-x-5 lg:inline-flex">
               <li class="list-none">
-                <a href="#" class="block rounded-md border-2 border-black py-2 px-4 hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-slate-900"><i class="fas fa-download"></i> Download</a>
+                <a href="#" class="block rounded-md border border-black py-px px-3 hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-slate-900"><i class="fas fa-download"></i> Download</a>
               </li>
               <li class="list-none">
-                <a href="#" class="block rounded-md border-2 border-black py-2 px-4 hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-slate-900"><i class="fas fa-expand"></i> Fullscreen</a>
+                <input type="checkbox" class="" id="fullscreen-toggle-desk" />
+                <label for="fullscreen-toggle-desk" class="">
+                  <span class="fullscreen-toggle block rounded-md border border-black py-px px-3 hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-slate-900"><i class="fas fa-expand"></i> Fullscreen</span>
+                </label>
               </li>
             </div>
             <!-- navbar dropdown for android -->
@@ -55,12 +64,15 @@
                 <i id="menu-toggle-icon" class="fa fa-bars text-2xl" aria-hidden="true"></i>
               </button>
               <div id="menu-drop" class="absolute -left-32 top-10 w-36 divide-y divide-gray-100 rounded bg-white opacity-0 shadow transition-all duration-200 ease-in-out dark:bg-gray-700">
-                <ul class="py-1 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                <ul class="text-md py-1 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                   <li>
                     <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fas fa-download"></i> Download</a>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fas fa-expand"></i> Fullscreen</a>
+                    <input type="checkbox" class="" id="fullscreen-toggle" />
+                    <label for="fullscreen-toggle">
+                      <span class="fullscreen-toggle block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fas fa-expand"></i> Fullscreen</span>
+                    </label>
                   </li>
                 </ul>
               </div>
@@ -73,9 +85,9 @@
 
     <!-- sidebar -->
     <div id="sidemenu" class="sidebar -left-[2.6rem] transform transition duration-300">
-      <div class="relative flex flex-col bg-purple-800 rounded-r-md shadow-lg">
+      <div class="relative flex flex-col rounded-r-md bg-purple-800 shadow-lg">
         <button class="p-3 transition-all duration-200 hover:bg-purple-900">
-          <span>
+          <span onclick="location.reload()">
             <i class="fas fa-home text-white"></i>
           </span>
         </button>
@@ -90,7 +102,8 @@
           </span>
         </button>
         <div id="goto-page-drop" class="absolute -right-32 top-32 w-36 divide-y divide-gray-100 rounded bg-white opacity-0 shadow transition-all duration-200 ease-in-out dark:bg-gray-700">
-          <ul class="py-1 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+          <!-- gotopage android -->
+          <ul class="text-md py-1 text-gray-700 dark:text-gray-200 md:hidden" aria-labelledby="dropdownDefault">
             <span class="p-4 text-lg">Go to Page</span>
             <li>
               <a href="#page_1" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1</a>
@@ -99,16 +112,23 @@
               <a href="#page_2" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2</a>
             </li>
           </ul>
+          <!-- gotopage desktop -->
+          <ul class="text-md py-1 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+            <span class="p-4 text-lg">Go to Page</span>
+            <div class="swiper-pagination"></div>
+          </ul>
         </div>
       </div>
-      <div id="sidebar-toggle" class="absolute top-[3.2rem] -right-7 w-7 h-10 cursor-pointer bg-purple-900 text-center flex items-center justify-center rounded-r-md">
-        <i id="sidebar-toggle-icon" class="fa fa-arrow-right text-2xl text-white" aria-hidden="true"></i>
+      <div id="sidebar-toggle" class="absolute top-[3.2rem] -right-7 flex h-10 w-7 cursor-pointer items-center justify-center rounded-r-md bg-purple-900 text-center">
+        <div id="sidebar-toggle-icon" class="transition duration-300">
+          <i class="fa fa-arrow-right text-2xl text-white" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
     <!-- endsidebar -->
 
     <!-- content android -->
-    <div id="content-android" class="blur-section android-content px-6 py-28 md:hidden space-y-10">
+    <div id="content-android" class="blur-section android-content space-y-10 px-6 py-28 md:hidden">
       <div id="page_1" class="">
         <img src="public/images/materi/tespart1.jpg" class="object-fit w-full" alt="" />
         <img src="public/images/materi/tespart2.jpg" class="object-fit w-full" alt="" />
@@ -120,9 +140,19 @@
     </div>
     <!-- endcontent android -->
     <!-- content desktop -->
-    <div id="content-desktop" class="blur-section desktop-content hidden w-11/12 pt-32 md:mx-auto md:block">
-      <div id="page_1" class="bg-slate-300 dark:bg-slate-900">
-        <img src="public/images/materi/tes adin-01.jpg" class="h-[500px] w-full object-contain" alt="" />
+    <div id="content-desktop" class="blur-section desktop-content hidden h-full w-10/12 pt-[35px] md:mx-auto md:block">
+      <div class="swiper mySwiper h-full bg-slate-300 dark:bg-slate-900">
+        <div class="swiper-wrapper">
+          <div id="page_1" class="swiper-slide">
+            <img src="public/images/materi/tespart1.jpg" class="h-[500px] w-full object-contain" alt="" />
+          </div>
+          <div id="page_1" class="swiper-slide">
+            <img src="public/images/materi/tes adin-01.jpg" class="h-[500px] w-full object-contain" alt="" />
+          </div>
+          <div id="page_1" class="swiper-slide">
+            <img src="public/images/materi/tes adin-01.jpg" class="h-[500px] w-full object-contain" alt="" />
+          </div>
+        </div>
       </div>
     </div>
     <!-- endcontent desktop -->
@@ -131,5 +161,19 @@
     <script src="public/source/fontawesome/js/all.min.js"></script>
     <script src="node_modules/flowbite/dist/flowbite.js"></script>
     <script src="public/source/js/script.js"></script>
+    <!-- Swiper JS -->
+    <script src="public/source/js/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+      let swiper = new Swiper(".mySwiper", {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span style="display: block; margin: 10px 15px;" class="' + className + '">' + (index + 1) + "</span>";
+          },
+        },
+      });
+    </script>
   </body>
 </html>

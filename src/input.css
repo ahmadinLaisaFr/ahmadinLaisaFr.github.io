@@ -9,7 +9,7 @@
     }
 
     .navbar {
-        @apply fixed md:relative top-0 left-0 right-0 z-[999] backdrop-blur-sm;
+        @apply fixed md:relative top-0 left-0 right-0 z-[999] backdrop-blur-[0.1px];
     }
 
     .sidebar{

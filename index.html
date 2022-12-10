@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="public/source/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="public/source/css/style.css" />
     <link rel="stylesheet" href="src/style.css" />
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="public/source/css/swiper-bundle.min.css" />
@@ -21,14 +22,16 @@
       // fullscreen checker
     </script>
   </head>
-  <body id="top" class="relative transition-colors duration-300 dark:bg-slate-800">
+  <body id="top" class="transition-colors duration-300 dark:bg-slate-800 relative">
+    <div class="black-bg bg-black opacity-30 w-full invisible absolute z-[999] bottom-0 top-0 md:hidden">
+    </div>
     <!-- navbar -->
-    <div id="navbar" class="blur-section  navbar border-b border-purple-900 bg-slate-800 transition-colors duration-300 dark:bg-slate-900 dark:shadow-2xl dark:shadow-purple-900 md:bg-opacity-100">
+    <div id="navbar" class="blur-section navbar bg-slate-800 transition-colors duration-300 dark:shadow-2xl dark:shadow-purple-900">
       <div class="flex p-2 md:py-0 md:px-2">
         <!-- pseudo container -->
         <div class="hidden w-6/12 justify-end md:flex"></div>
         <!-- nav logo -->
-        <div class="flex w-6/12 items-center md:justify-center">
+        <div class="flex w-6/12 items-center md:justify-center logo">
           <img class="h-[3rem] w-[3rem] ease-in-out hover:animate-pulse md:h-[3.5rem] md:w-[3.5rem]" src="public/images/logo/magz.png" alt="" />
         </div>
         <!-- nav menu -->
@@ -48,12 +51,12 @@
             <!-- navbar desktop -->
             <div class="hidden items-center space-x-5 lg:inline-flex">
               <li class="list-none">
-                <a href="#" class="block rounded-md border border-white py-px px-3 text-white hover:bg-gray-100"><i class="fas fa-download"></i> Download</a>
+                <a href="#" class="block rounded-md border border-white py-px px-3 text-white hover:bg-slate-900"><i class="fas fa-download"></i> Download</a>
               </li>
               <li class="list-none">
                 <input type="checkbox" class="hidden" id="fullscreen-toggle-desk" />
                 <label for="fullscreen-toggle-desk" class="">
-                  <span class="fullscreen-toggle block rounded-md border border-white py-px px-3 text-white hover:bg-gray-100"><i class="fas fa-expand"></i> Fullscreen</span>
+                  <span class="fullscreen-toggle block rounded-md border border-white py-px px-3 text-white hover:bg-slate-900"><i class="fas fa-expand"></i> Fullscreen</span>
                 </label>
               </li>
             </div>
@@ -83,7 +86,7 @@
     <!-- endnavbar -->
 
     <!-- sidebar -->
-    <div id="sidemenu" class="sidebar -translate-x-[3.7rem] transform transition duration-300">
+    <div id="sidemenu" class="sidebar -translate-x-[3.7rem] translate-x-[0.01rem] transform transition duration-300"> 
       <div class="relative flex flex-col rounded-r-md bg-purple-800">
         <!-- home desktop -->
         <button class="hidden p-4 transition-all duration-200 hover:bg-purple-900 md:block">
@@ -129,7 +132,7 @@
         </div>
       </div>
       <div id="sidebar-toggle" class="absolute top-[4.2rem] -right-7 flex h-10 w-7 cursor-pointer items-center justify-center rounded-r-md bg-purple-900 text-center">
-        <div id="sidebar-toggle-icon" class="transition duration-300">
+        <div id="sidebar-toggle-icon" class="transition duration-300 -rotate-180">
           <i class="fa fa-arrow-right text-2xl text-white" aria-hidden="true"></i>
         </div>
       </div>
@@ -137,7 +140,7 @@
     <!-- endsidebar -->
 
     <!-- content android -->
-    <div id="content-android" class="blur-section  android-content space-y-10 px-6 py-28 md:hidden">
+    <div id="content-android" class="blur-section android-content space-y-10 px-6 py-28 md:hidden">
       <div id="page_1" class="">
         <img src="public/images/materi/android/tespart1.jpg" class="object-fit w-full" alt="" />
         <img src="public/images/materi/android/tespart2.jpg" class="object-fit w-full" alt="" />
@@ -149,27 +152,38 @@
     </div>
     <!-- endcontent android -->
     <!-- content desktop -->
-    <div id="content-desktop" class="blur-section  desktop-content hidden h-full w-10/12 pt-[45px] md:mx-auto md:block">
-      <div class="swiper mySwiper h-full dark:bg-slate-900">
+    <div id="content-desktop" class="blur-section desktop-content hidden h-440 w-10/12 pb-[45px] pt-[45px] md:mx-auto md:block">
+      <div class="swiper mySwiper h-full ">
         <div class="swiper-wrapper">
-          <!-- cover -->
-          <div id="page_1" class="swiper-slide">
-            <img src="public/images/materi/android/tespart1.jpg" class="h-[500px] w-full object-contain" alt="" />
+          <!-- cover depan -->
+          <div id="page_1" class="cover swiper-slide">
+            <img src="public/images/materi/cover/cover depan-01.jpg" class="h-[500px] w-full object-contain" alt="" />
           </div>
-          <!-- end cover -->
-
+          <!-- end cover depan-->
+          
+          <!-- artikel kisah -->
           <div id="page_1" class="swiper-slide">
             <img src="public/images/materi/desktop/artikelkisah.jpg" class="h-[500px] w-full object-contain" alt="" />
           </div>
+
+          <!-- artikel profil sekolah -->
           <div id="page_1" class="swiper-slide">
-            <img src="public/images/materi/desktop/tes adin-01.jpg" class="h-[500px] w-full object-contain" alt="" />
+            <img src="public\images\materi\desktop\artikel sekolah prestasi sekolah b indo-01.jpg" class="h-[500px] w-full object-contain" alt="" />
           </div>
+
+          <!-- cover belakang -->
+          <div id="page_1" class="cover swiper-slide">
+            <img src="public/images/materi/cover/cover belakang-01.jpg" class="h-[500px] w-full object-contain" alt="" />
+          </div>
+          <!-- end cover belakang-->
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
     <!-- endcontent desktop -->
 
-    <a href="#top" id="to-top" class="fixed bottom-5 right-5 transition-all duration-200 md:hidden">
+    <a href="#top" id="to-top" class="fixed bottom-5 right-5 transition-all duration-200 md:hidden z-[9999]">
       <button title="to top" class="flex items-center rounded-full bg-purple-800 p-3 px-4 transition-all duration-200 hover:bg-purple-900 md:hidden">
         <span>
           <i class="fas fa-arrow-up align-middle text-xl text-white"></i>
@@ -186,6 +200,11 @@
     <!-- Initialize Swiper -->
     <script>
       let swiper = new Swiper(".mySwiper", {
+        loop : true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
         pagination: {
           el: ".swiper-pagination",
           clickable: true,

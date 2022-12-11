@@ -1,15 +1,18 @@
 // darkmode toggle
 let toggle = document.querySelector('#toggle')
 let html = document.documentElement
+let body = document.querySelector('body')
     
 const toggleDarkMode = () => {
     // ubah tema menjadi dark dan simpan data tema ke lokal storage
     if (toggle.checked) {
         html.classList.add('dark')
         localStorage.theme = 'dark'
+        body.style.backgroundImage = "url(public/images/bg/bgdark.jpg)"
     } else {
         html.classList.remove("dark")
         localStorage.theme = "light"
+        body.style.backgroundImage = "url(public/images/bg/bglight.jpg)"
     }
 
 }
@@ -85,6 +88,8 @@ let menuDrop = document.querySelector('#menu-drop')
 
 menuToggle.addEventListener("click", () => {
     menuDrop.classList.toggle("opacity-0")
+    menuDrop.classList.toggle("-translate-x-0");
+    body.classList.toggle("overflow-hidden")
 })
 // menu dropdown gotopage
 let gotoPageToggle = document.querySelector("#goto-page-toggle")
@@ -105,7 +110,7 @@ let sidebarMenu = document.querySelector('#sidemenu')
 sidebarToggle.addEventListener("click", () => {
   sidebarToggleIcon.classList.toggle("-rotate-180")
   sidebarMenu.classList.toggle("translate-x-[0.01rem]")
-  bgblack.classList.toggle("invisible")
+  body.classList.toggle("overflow-hidden");
   if (!gotoPageDrop.classList.contains("opacity-0")) {
       gotoPageDrop.classList.toggle("opacity-0")
   }
@@ -116,16 +121,23 @@ sidebarToggle.addEventListener("click", () => {
 // start to top
 
 let toTop = document.getElementById("to-top")
+let navbar = document.getElementById("navbar")
+let contentAndroid = document.getElementById("content-android");
 
-if (window.scrollY < 100) {
-    toTop.classList.add("opacity-0")
+if (window.scrollY < 300) {
+  toTop.classList.add("hidden")
+  
 }
 
 window.onscroll = function() {
-    if (window.scrollY > 100) {
-        toTop.classList.remove("opacity-0")
+    if (window.scrollY > 300) {
+      toTop.classList.remove("hidden")
+      navbar.classList.add("fixed")
+      contentAndroid.classList.add("py-28")
     } else {
-        toTop.classList.add("opacity-0")
+      toTop.classList.add("hidden")
+      navbar.classList.remove("fixed")
+      contentAndroid.classList.remove("py-28");
     }
 }
 // end to top

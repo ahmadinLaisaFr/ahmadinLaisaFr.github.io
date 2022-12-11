@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "index.html",
-    "./node_modules/flowbite/**/*.js"
-  ],
+  content: ["index.html", "./node_modules/flowbite/**/*.js"],
   darkMode: "class",
   theme: {
     extend: {
@@ -23,6 +20,14 @@ module.exports = {
       height: {
         500: "500px",
         86: "24rem",
+      },
+      keyframes: {
+        nos: {
+          "0%, 100%": { transform: "translateX(700px)" }
+        },
+      },
+      animation: {
+        nos: "nos 20s",
       },
     },
   },

@@ -5,15 +5,15 @@
 @layer components {
     #toggle:checked ~ label div.toggle-circle {
     /* transform: translateX(0.75rem); */
-    @apply translate-x-[0.80rem];
+    @apply translate-x-[1rem];
     }
 
     .navbar {
-        @apply fixed md:relative top-0 left-0 right-0 z-[999] backdrop-blur-[0.1px];
+        @apply md:relative top-0 left-0 right-0 z-[999] backdrop-blur-[0.1px];
     }
 
     .sidebar{
-        @apply w-fit fixed top-[315px] z-[9999];
+        @apply w-fit fixed top-[280px] z-[9999];
     }
 
     .blur-section{

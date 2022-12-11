@@ -1,7 +1,16 @@
 body{
     height: 100%;
-    background-image: url("../../images/bg/bgdark.jpg");
-    background-size: fit;
+    background-size: contain;
     background-position: center;
     background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+@keyframes meluncur{
+    from {top: -36rem;}
+    to {top: 38rem;}
+}
+
+.meluncur{
+    animation : meluncur 10s ease-in-out infinite;
 }

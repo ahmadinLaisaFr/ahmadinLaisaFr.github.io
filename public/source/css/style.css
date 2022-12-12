@@ -1,14 +1,14 @@
 body{
     height: 100%;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: repeat-y;
     background-attachment: fixed;
 }
 
 @keyframes meluncur{
     from {top: -36rem;}
-    to {top: 38rem;}
+    to {top: 100rem;}
 }
 
 .meluncur{

@@ -2,6 +2,7 @@
 let toggle = document.querySelector('#toggle')
 let html = document.documentElement
 let body = document.querySelector('body')
+let scene = document.getElementById("scene")
     
 const toggleDarkMode = () => {
     // ubah tema menjadi dark dan simpan data tema ke lokal storage
@@ -82,23 +83,13 @@ fullscreenDesk.addEventListener('click', () => {
 // end fullscreen toggle
 
 // menu dropdown android
-let menuToggle = document.querySelector("#menu-toggle")
+let menuToggle = document.querySelector(".dropbtn")
 let menuDrop = document.querySelector('#menu-drop')
 
 
 menuToggle.addEventListener("click", () => {
     menuDrop.classList.toggle("opacity-0")
-    menuDrop.classList.toggle("-translate-x-0");
-    body.classList.toggle("overflow-hidden")
-})
-// menu dropdown gotopage
-let gotoPageToggle = document.querySelector("#goto-page-toggle")
-let gotoPageDrop = document.querySelector('#goto-page-drop')
-let bgblack = document.querySelector(".black-bg")
-
-
-gotoPageToggle.addEventListener("click", () => {
-    gotoPageDrop.classList.toggle("opacity-0")
+    menuDrop.classList.toggle("translate-x-40");  
 })
 
 // menu sidebar
@@ -106,13 +97,21 @@ let sidebarToggleIcon = document.querySelector("#sidebar-toggle-icon")
 let sidebarToggle = document.querySelector("#sidebar-toggle")
 let sidebarMenu = document.querySelector('#sidemenu')
 
+// menu dropdown gotopage
+let gotoPageToggle = document.querySelector("#goto-page-toggle")
+let gotoPageDrop = document.querySelector('#goto-page-drop')
+let bgblack = document.querySelector(".black-bg")
+
+
+gotoPageToggle.addEventListener("click", () => {
+  gotoPageDrop.classList.toggle("-translate-x-48");
+})
 
 sidebarToggle.addEventListener("click", () => {
-  sidebarToggleIcon.classList.toggle("-rotate-180")
-  sidebarMenu.classList.toggle("translate-x-[0.01rem]")
-  body.classList.toggle("overflow-hidden");
-  if (!gotoPageDrop.classList.contains("opacity-0")) {
-      gotoPageDrop.classList.toggle("opacity-0")
+  sidebarToggleIcon.classList.toggle("-rotat-180")
+  sidebarMenu.classList.toggle("-translate-x-[3.9rem]")
+  if (!gotoPageDrop.classList.contains("-translate-x-48")) {
+    gotoPageDrop.classList.toggle("-translate-x-48");
   }
 })
 
@@ -124,20 +123,52 @@ let toTop = document.getElementById("to-top")
 let navbar = document.getElementById("navbar")
 let contentAndroid = document.getElementById("content-android");
 
-if (window.scrollY < 300) {
+if (window.scrollY < 120) {
   toTop.classList.add("hidden")
-  
 }
 
 window.onscroll = function() {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 120) {
       toTop.classList.remove("hidden")
-      navbar.classList.add("fixed")
-      contentAndroid.classList.add("py-28")
     } else {
       toTop.classList.add("hidden")
-      navbar.classList.remove("fixed")
-      contentAndroid.classList.remove("py-28");
     }
 }
 // end to top
+
+// musik
+let musikToggle = document.querySelector("#musik")
+let musikControl = document.querySelector("#audio")
+let musikClose = document.querySelector("#audioClose")
+
+musikToggle.addEventListener("click", () => {
+  musikControl.classList.toggle("-translate-y-16");
+  musikControl.classList.toggle("-translate-y-72");
+})
+
+musikClose.addEventListener("click", () => {
+  musikControl.classList.toggle("-translate-y-16");
+  musikControl.classList.toggle("-translate-y-72");
+})
+
+
+// end musik
+
+// sembunyikan elemen dropdown jika diklik disembarang tempat kecuali element pengaktif
+
+window.onclick = (event) => {
+  if (!event.target.matches(".dropbtn")) {
+    menuDrop.classList.add("opacity-0");
+    menuDrop.classList.add("translate-x-40");
+  }
+}  
+
+// if (!event.target.matches(".sidebar")) {
+//   sidebarToggleIcon.classList.remove("-rotate-180");
+//   sidebarMenu.classList.add("-translate-x-[3.7rem]");
+// }
+// if (!event.target.matches(".dropbtn")) {
+//   menuDrop.classList.add("opacity-0");
+//   menuDrop.classList.add("translate-x-40");
+// }
+// end sembunyikan elemen dropdown jika diklik disembarang tempat kecuali element pengakti
